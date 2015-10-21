@@ -9,12 +9,13 @@ skype = Skype4Py.Skype()
 skype.Attach()
 #chat = skype.Chat("#johnyburd/$7f326bf4d6d018d5") #johnyburd
 chat = skype.Chat("#johnyburd/$b5b2fea895ecb6f9") #public
-senders = []
+senders = ["my","hands","are typing","words"]
 
 for m in chat.Members:
     print(m)
 
 def reply(msg, sender):
+    reply = 0
     if re.match(r'(hello|hi|salutations|greetings) jonbot', msg, re.I):
         reply = "hi, "+sender+"!"
     elif re.match(r'(jonbot )?(you\'re|your|youre|you are) .*(jonbot)?', msg, re.I):
@@ -44,7 +45,7 @@ def reply(msg, sender):
     elif msg == "jonbot quit":
         if sender == "johnyburd":
             chat.SendMessage("Okay Bye :'(")
-            exit()
+            os._exit(0)
         else:
             reply = "you're not the boss of me!"
     elif msg == "!refresh":
@@ -62,7 +63,9 @@ def reply(msg, sender):
             else:
                 if random.randint(1,10)==1:
                     reply = lukebot.generate_response(msg)
-    chat.SendMessage(reply)
+    if reply !=0:
+        chat.SendMessage(reply)
+        reply = 0
 
 def save_msg(msg, sender):
     if re.match(r'spygreen_oo', sender, re.I):
@@ -79,14 +82,15 @@ def on_message_status(message, status):
         if status == "RECEIVED":
             if message.Type == "SAID":
                 #print(skype.ActiveChats)
-                #chat.SendMessage("this is a test") 
+                #chat.SendMessage("this is a test")
                 print(message.Chat)
                 for line in message.Body.split('\n'):
 
                     print(sender+": "+line)
                     save_msg(line, sender)
                     reply(line, sender)
-                    senders.append(sender)
+                    senders.insert(0,sender)
+                    print(senders)
 
             elif message.Type == "EMOTED":
                 print("idk")
