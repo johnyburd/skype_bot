@@ -17,6 +17,6 @@ def generate_response(msg):
         neword=nextword(s)
         response+=' '+neword
         s=neword
-        if neword[-1] in ',?!.':
+        if neword[-1] in '?!.':
             break
     return response
