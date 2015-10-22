@@ -1,3 +1,5 @@
+#!/bin/python2
+
 import Skype4Py
 import time
 import re

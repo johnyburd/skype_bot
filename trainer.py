@@ -1,3 +1,4 @@
+#!/bin/python2
 #lukebot-trainer.py
 import pickle
 b=open('train.txt')
