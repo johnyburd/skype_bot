@@ -11,7 +11,10 @@ def generate_response(msg):
             return 'the'
     #speech='':
     speech=msg
-    s=random.choice(speech.split())
+    while 1:
+        s=random.choice(speech.split())
+        if len(s) > 3 and s != "jonbot":
+            break
     response=''
     while True:
         neword=nextword(s)

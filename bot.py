@@ -1,4 +1,3 @@
-#!/bin/python2
 
 import Skype4Py
 import time
@@ -9,8 +8,9 @@ import os
 
 skype = Skype4Py.Skype()
 skype.Attach()
-chat = skype.Chat("#johnyburd/$7f326bf4d6d018d5") #johnyburd
+#chat = skype.Chat("#johnyburd/$7f326bf4d6d018d5") #johnyburd
 #chat = skype.Chat("#johnyburd/$b5b2fea895ecb6f9") #public
+chat = skype.Chat("#anthonybob3/$599ec70c206fb407") #cousins
 senders = ["my","hands","are typing words"]
 
 for m in chat.Members:
@@ -44,7 +44,7 @@ def reply(msg, sender):
         else:
             print("false alarm")
 
-    elif msg == "!quit":
+    elif msg == "jonbot quit":
         if sender == "johnyburd":
             chat.SendMessage("Okay Bye :'(")
             os._exit(0)
@@ -60,7 +60,7 @@ def reply(msg, sender):
         if re.match('.*jonbot.*', msg, re.I):
             reply = lukebot.generate_response(msg)
         else:
-            if senders[0]==senders[1] and senders[1]==senders[2] and senders[2]==senders[3]:
+            if senders[0]==senders[1] and senders[1]==senders[2]:
                 reply = lukebot.generate_response(msg)
             else:
                 if random.randint(1,10)==1:
